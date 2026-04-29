@@ -3,13 +3,14 @@ import { LayoutDashboard, Map, Trophy, GitCompare, Sparkles, Globe2 } from "luci
 import { useQuery } from "@tanstack/react-query";
 import { healthQuery } from "@/lib/queries";
 
-const NAV = [
+type NavItem = { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean };
+const NAV: NavItem[] = [
   { to: "/", label: "Dashboard", icon: LayoutDashboard, exact: true },
   { to: "/map", label: "Map", icon: Map },
   { to: "/rankings", label: "Rankings", icon: Trophy },
   { to: "/compare", label: "Compare", icon: GitCompare },
   { to: "/search", label: "AI Search", icon: Sparkles },
-] as const;
+];
 
 export function Sidebar() {
   const path = useRouterState({ select: (s) => s.location.pathname });
