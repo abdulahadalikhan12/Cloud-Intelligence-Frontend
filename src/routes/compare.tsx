@@ -44,8 +44,8 @@ function Compare() {
     items.forEach((c, idx) => {
       const name = c.city || c.name;
       const v = metric === "AQI" ? 100 - Math.min(100, pickAqi(c.air_quality ?? c) / 3)
-        : metric === "Temp" ? Number(c.weather?.temperature ?? c.temperature ?? 50)
-        : metric === "Humidity" ? Number(c.weather?.humidity ?? c.humidity ?? 50)
+        : metric === "Temp" ? Number(c.weather?.temperature_c ?? 50)
+        : metric === "Humidity" ? Number(c.weather?.humidity_pct ?? 50)
         : metric === "PM2.5" ? Math.max(0, 100 - Number(c.air_quality?.pm25 ?? c.pm25 ?? 0))
         : Number(c.score ?? c.livability_score ?? 50);
       row[name || `c${idx}`] = Math.max(0, Math.min(100, v));
@@ -123,8 +123,8 @@ function Compare() {
                 <tbody className="tabular-nums">
                   {[
                     ["AQI", (c: any) => Math.round(pickAqi(c.air_quality ?? c))],
-                    ["Temperature", (c: any) => `${Math.round(Number(c.weather?.temperature ?? c.temperature ?? 0))}°`],
-                    ["Humidity", (c: any) => `${c.weather?.humidity ?? c.humidity ?? "—"}%`],
+                    ["Temperature", (c: any) => `${Math.round(Number(c.weather?.temperature_c ?? 0))}°`],
+                    ["Humidity", (c: any) => `${c.weather?.humidity_pct ?? "—"}%`],
                     ["PM2.5", (c: any) => Number(c.air_quality?.pm25 ?? c.pm25 ?? 0).toFixed(1)],
                     ["Score", (c: any) => Math.round(Number(c.score ?? c.livability_score ?? 0))],
                   ].map(([label, fn]) => (

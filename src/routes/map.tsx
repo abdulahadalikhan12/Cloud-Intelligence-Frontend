@@ -136,13 +136,13 @@ function CityPanel({ city, onClose }: { city: string; onClose: () => void }) {
             <div className="glass rounded-xl p-4">
               <div className="text-xs uppercase text-muted-foreground tracking-wider">Current Weather</div>
               <div className="mt-2 flex items-baseline gap-2">
-                <span className="text-4xl font-bold tabular-nums">{Math.round(Number(w.temperature ?? w.temp ?? 0))}°</span>
-                <span className="text-sm text-muted-foreground">{w.condition || w.description || "—"}</span>
+                <span className="text-4xl font-bold tabular-nums">{Math.round(Number(w.temperature_c ?? 0))}°</span>
+                <span className="text-sm text-muted-foreground">{w.condition || "—"}</span>
               </div>
               <div className="mt-3 grid grid-cols-3 gap-2 text-xs">
-                <div><div className="text-muted-foreground">Humidity</div><div className="font-semibold tabular-nums">{w.humidity ?? "—"}%</div></div>
-                <div><div className="text-muted-foreground">Wind</div><div className="font-semibold tabular-nums">{w.wind_speed ?? w.wind ?? "—"}</div></div>
-                <div><div className="text-muted-foreground">Pressure</div><div className="font-semibold tabular-nums">{w.pressure ?? "—"}</div></div>
+                <div><div className="text-muted-foreground">Humidity</div><div className="font-semibold tabular-nums">{w.humidity_pct ?? "—"}%</div></div>
+                <div><div className="text-muted-foreground">Wind</div><div className="font-semibold tabular-nums">{w.wind_speed_kmh ?? "—"} km/h</div></div>
+                <div><div className="text-muted-foreground">Pressure</div><div className="font-semibold tabular-nums">{w.pressure_hpa ?? "—"} hPa</div></div>
               </div>
             </div>
             <div className="glass rounded-xl p-4">

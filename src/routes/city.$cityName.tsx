@@ -120,15 +120,15 @@ function CityDetail() {
         <GlassCard delay={0.05}>
           <SectionTitle>Current Weather</SectionTitle>
           <div className="flex items-baseline gap-3">
-            <span className="text-6xl font-extrabold tabular-nums">{Math.round(Number(w.temperature ?? w.temp ?? 0))}°</span>
-            <span className="text-lg text-muted-foreground">{w.condition ?? w.description ?? "—"}</span>
+            <span className="text-6xl font-extrabold tabular-nums">{Math.round(Number(w.temperature_c ?? 0))}°</span>
+            <span className="text-lg text-muted-foreground">{w.condition ?? "—"}</span>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-3">
             {[
-              { icon: Thermometer, label: "Feels Like", val: `${Math.round(Number(w.feels_like ?? w.temperature ?? 0))}°` },
-              { icon: Droplets, label: "Humidity", val: `${w.humidity ?? "—"}%` },
-              { icon: Wind, label: "Wind", val: `${w.wind_speed ?? w.wind ?? "—"} m/s` },
-              { icon: Gauge, label: "Pressure", val: `${w.pressure ?? "—"} hPa` },
+              { icon: Thermometer, label: "Feels Like", val: `${Math.round(Number(w.feels_like_c ?? w.temperature_c ?? 0))}°` },
+              { icon: Droplets, label: "Humidity", val: `${w.humidity_pct ?? "—"}%` },
+              { icon: Wind, label: "Wind", val: `${w.wind_speed_kmh ?? "—"} km/h` },
+              { icon: Gauge, label: "Pressure", val: `${w.pressure_hpa ?? "—"} hPa` },
             ].map(({ icon: I, label, val }) => (
               <div key={label} className="glass rounded-lg p-3 flex items-center gap-3">
                 <I className="h-4 w-4 text-primary-glow" />
