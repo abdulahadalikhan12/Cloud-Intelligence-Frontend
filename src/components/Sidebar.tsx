@@ -34,7 +34,7 @@ export function Sidebar() {
           return (
             <Link
               key={to}
-              to={to}
+              to={to as any}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-300 group ${
                 active
                   ? "bg-primary/15 text-primary-glow shadow-[inset_0_0_0_1px_rgba(99,102,241,0.25)]"
@@ -67,7 +67,7 @@ export function MobileNav() {
         return (
           <Link
             key={to}
-            to={to}
+            to={to as any}
             className={`flex flex-col items-center gap-1 px-3 py-1.5 rounded-lg transition-colors ${
               active ? "text-primary-glow" : "text-muted-foreground"
             }`}
